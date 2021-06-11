@@ -31,9 +31,59 @@ someone enters a password, determine its strength and display the result
 
 import java.util.Scanner;
 
-public class App {
+import static java.lang.System.exit;
+
+public class Solution25 {
+
+    public static final Scanner in = new Scanner(System.in);
+
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
+
+        String password;
+        String output;
+
+        readUserInput(password);
+
+        isVeryWeak(password, output);
+
+        isWeak(password, output);
+
+        //else check if password is strong
+        //else check if password is very strong
+
 
     }
+
+    //prompt input
+    public static void readUserInput (String password) {
+        System.out.println("Enter in a password:");
+
+        //take in input
+        password = in.next();
+    }
+
+    //check if password is very weak
+    public static void isVeryWeak (String password, String output){
+        if (password.length() < 8) {
+            output = "The password " + password + " is a very weak password.";
+
+            printUserOutput(output);
+        }
+        else if (!password.contains("[a-zA-Z]+")){
+            output = "The password " + password + " is a very weak password.";
+
+            printUserOutput(output);
+        }
+    }
+
+    public static void isWeak (String password, String output){
+
+    }
+
+    //print output
+    public static void printUserOutput(String output){
+        System.out.println(output;
+        exit(0);
+    }
+
 }

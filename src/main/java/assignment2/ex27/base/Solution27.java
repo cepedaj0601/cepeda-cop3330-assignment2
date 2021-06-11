@@ -48,7 +48,7 @@ Repeat the process if the input is not valid.
 
 import java.util.Scanner;
 
-public class App {
+public class Solution27 {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
 

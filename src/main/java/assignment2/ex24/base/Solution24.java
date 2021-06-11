@@ -26,10 +26,45 @@ your own algorithm.
  */
 
 import java.util.Scanner;
+import java.util.Arrays;
 
-public class App {
+import static java.lang.System.exit;
+
+public class Solution24 {
+    private static final Scanner in = new Scanner(System.in);
+
+    private static String word1;
+    private static String word2;
+
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
 
+        //read two strings
+        readUserInput();
+
+        AnagramDetector ad = new AnagramDetector();
+        boolean result = ad.isAnagram(word1, word2);
+
+        String output = generateOutput(result);
+
+        System.out.println(output);
+
+    }
+
+    public static void readUserInput(){
+        System.out.println("Enter word 1");
+        word1 = in.next();
+
+        System.out.println("Enter word 2");
+        word2 = in.next();
+    }
+
+    public static String generateOutput(boolean isAnagram){
+        String output;
+        if(isAnagram){
+            return "is anagram";
+        }
+        else{
+            return "is not anagram";
+        }
     }
 }

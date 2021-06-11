@@ -42,7 +42,7 @@ the amount needed to pay per month.
 
 import java.util.Scanner;
 
-public class App {
+public class Solution26 {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
 
