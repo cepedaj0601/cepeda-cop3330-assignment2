@@ -47,82 +47,117 @@ public class Solution25 {
         String output = "";
         String response = "0";
 
-        readUserInput(password);
+        Solution25 sol25Main = new Solution25() ;
 
-        passwordValidator(password, response, isVeryWeak(password, response), isWeak(password, response),
-                isStrong(password, response), isVeryStrong(password, response));
+        password = sol25Main.readUserInput();
 
-        printUserOutput(response, output, password);
+        response = sol25Main.passwordValidator(password, response);
+
+        System.out.println(response);
+
+        sol25Main.printUserOutput(response, output, password);
     }
 
     //prompt input
-    public static String readUserInput(String password) {
+    public String readUserInput() {
         System.out.println("Enter in a password:");
 
-        //take in input
-        password = in.next();
+        String password = in.next();
 
         return password;
     }
 
-    public static String isVeryWeak(String password, String response){
+    public String isVeryWeak(String password, String response){
         if (password.length() < 8) {
-            if (!password.contains("[a-zA-Z]+")) {
+
+            boolean numbers = true;
+
+            numbers = password.matches("-?\\d+(\\.\\d+)?");
+
+            if(numbers) {
                 response = "1";
+                return response;
             }
+
+            else
+                return response ;
+
+        }
+        else {
+            return response ;
         }
 
-        return response;
     }
 
-    public static String isWeak (String password, String response){
+    public String isWeak (String password, String response){
         if (password.length() < 8) {
-            if(!password.contains("[0-9]+")){
+            if(! password.matches(".*[^a-z].*")){
                 response = "2";
             }
         }
         return response;
     }
 
-    public static String isStrong (String password, String response){
+    public String isStrong (String password, String response){
         if (password.length() >= 8) {
-            char[] passwordArray = password.toCharArray();
+            Pattern pattern = Pattern.compile("[^a-zA-Z0-9]");
 
-            for (int i = 0; i < passwordArray.length; i++) {
-                if (passwordArray[i] == '0' || passwordArray[i] == '1' || passwordArray[i] == '2' ||
-                        passwordArray[i] == '3' || passwordArray[i] == '4' || passwordArray[i] == '5' ||
-                        passwordArray[i] == '6' || passwordArray[i] == '7' || passwordArray[i] == '8' ||
-                        passwordArray[i] == '9') {
+            Matcher matcher = pattern.matcher(password);
 
-                    response = "3";
+            if (!matcher.find() ) {
+
+
+                char[] passwordArray = password.toCharArray();
+
+                for (char c : passwordArray) {
+                    if (c == '0' || c == '1' || c == '2' ||
+                            c == '3' || c == '4' || c == '5' ||
+                            c == '6' || c == '7' || c == '8' ||
+                            c == '9') {
+                        if (password.matches(".*[a-zA-Z]+.*")) {
+                            response = "3";
+                            break;
+                        }
+                    }
                 }
             }
         }
         return response;
     }
 
-    public static String isVeryStrong (String password, String response){
+    public String isVeryStrong (String password, String response){
         Pattern pattern = Pattern.compile("[^a-zA-Z0-9]");
 
         Matcher matcher = pattern.matcher(password);
 
-        if (matcher.find()) {
-            response = "4";
+        if (password.length() >= 8) {
+            if (matcher.find()) {
+                response = "4";
+            }
+        }
+        else{
+            return response;
         }
 
         return response;
     }
 
-    public static String passwordValidator (String password, String response, String isVeryWeak, String isWeak,
-                                            String isStrong, String isVeryStrong){
-
-        if (!isVeryWeak.equals(1)) {
-            if (!isWeak.equals(2)) {
-                if (!isStrong.equals(3)) {
-                    if (!isVeryStrong.equals(4)) {
+    public String passwordValidator (String password, String response){
+        response = isVeryWeak(password, response);
+        if (!isVeryWeak(password, response).equals("1")) {
+            response = isWeak(password, response);
+            if (!isWeak(password, response).equals("2")) {
+                response = isStrong(password, response);
+                if (!isStrong(password, response).equals("3")) {
+                    response = isVeryStrong(password, response);
+                    if (!isVeryStrong(password, response).equals("4")) {
                         response = "5";
                         return response;
                     }
+                }
+                else if (isVeryStrong(password, response).equals("4")) {
+                    response = isVeryStrong(password, response);
+                    return response ;
                 }
             }
         }
@@ -133,25 +168,17 @@ public class Solution25 {
         return response;
     }
 
-    public static void printUserOutput(String response, String output, String password){
+    public void printUserOutput(String response, String output, String password){
 
         int responseInt = Integer.parseInt(response);
 
-        switch(responseInt){
-            case 1:
-                output = "The password " + password + " is a very weak password.";
-                break;
-            case 2:
-                output = "The password " + password + " is a weak password.";
-                break;
-            case 3:
-                output = "The password " + password + " is a strong password.";
-                break;
-            case 4:
-                output = "The password " + password + " is a very strong password.";
-                break;
-            case 5:
-                output = "The password " + password + " does not fit the criteria of any known password strengths.";
+        switch (responseInt) {
+            case 1 -> output = "The password " + password + " is a very weak password.";
+            case 2 -> output = "The password " + password + " is a weak password.";
+            case 3 -> output = "The password " + password + " is a strong password.";
+            case 4 -> output = "The password " + password + " is a very strong password.";
+            case 5 -> output = "The password " + password +
+                    " does not fit the criteria of any known password strengths.";
         }
 
         System.out.println(output);
