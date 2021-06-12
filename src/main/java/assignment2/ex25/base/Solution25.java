@@ -33,56 +33,106 @@ import java.util.Scanner;
 
 import static java.lang.System.exit;
 
+import java.util.regex.Matcher;
+
+import java.util.regex.Pattern;
+
 public class Solution25 {
 
     public static final Scanner in = new Scanner(System.in);
 
     public static void main(String[] args) {
 
-        String password;
-        String output;
+        String password = "";
+        String output = "";
+        int response = 0;
 
-        readUserInput(password);
+        readUserInput();
 
-        isVeryWeak(password, output);
+        passwordValidator(password, response);
 
-        isWeak(password, output);
-
-        //else check if password is strong
-        //else check if password is very strong
-
-
+        printUserOutput(response, output, password);
     }
 
     //prompt input
-    public static void readUserInput (String password) {
+    public static String readUserInput() {
         System.out.println("Enter in a password:");
 
         //take in input
-        password = in.next();
-    }
+        String password = in.next();
 
-    //check if password is very weak
-    public static void isVeryWeak (String password, String output){
+        return password;
+    }
+    public static void isVeryWeak (String password, int response){
+
+    }
+    public static void isWeak (String password, int response){
+
+    }
+    public static void isStrong (String password, int response){
+
+    }
+    public static void isVeryStrong (String password, int response){
+
+    }
+    public static int passwordValidator (String password, int response){
         if (password.length() < 8) {
-            output = "The password " + password + " is a very weak password.";
-
-            printUserOutput(output);
+            if (!password.contains("[a-zA-Z]+")){
+                response = 1;
+            }
+            else if(!password.contains("[0-9]+")){
+                response = 2;
+            }
         }
-        else if (!password.contains("[a-zA-Z]+")){
-            output = "The password " + password + " is a very weak password.";
+        else if (password.length() >= 8){
+            char[] passwordArray = password.toCharArray();
 
-            printUserOutput(output);
+            for (int i = 0; i < passwordArray.length; i++) {
+                if (passwordArray[i] == '0' || passwordArray[i] == '1' || passwordArray[i] == '2' ||
+                        passwordArray[i] == '3' || passwordArray[i] == '4' || passwordArray[i] == '5' ||
+                        passwordArray[i] == '6' || passwordArray[i] == '7' || passwordArray[i] == '8' ||
+                        passwordArray[i] == '9' ) {
+
+                    password = passwordArray.toString();
+                    response = 3;
+                }
+            }
+
+            password = passwordArray.toString();
+
+            Pattern pattern = Pattern.compile("[^a-zA-Z0-9]");
+
+            Matcher matcher = pattern.matcher(password);
+
+            if (matcher.find()) {
+                response = 4;
+            }
         }
+        else{
+            response = 5;
+        }
+        return response;
     }
 
-    public static void isWeak (String password, String output){
+    public static void printUserOutput(int response, String output, String password){
+        switch(response){
+            case 1:
+                output = "The password " + password + " is a very weak password.";
+                break;
+            case 2:
+                output = "The password " + password + " is a weak password.";
+                break;
+            case 3:
+                output = "The password " + password + " is a strong password.";
+                break;
+            case 4:
+                output = "The password " + password + " is a very strong password.";
+                break;
+            case 5:
+                output = "The password " + password + " does not fit the criteria of any known password strengths.";
+        }
 
-    }
-
-    //print output
-    public static void printUserOutput(String output){
-        System.out.println(output;
+        System.out.println(output);
         exit(0);
     }
 
