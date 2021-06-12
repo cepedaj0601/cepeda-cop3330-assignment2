@@ -40,57 +40,55 @@ Create a version of the program that lets the user choose whether to figure out 
 the amount needed to pay per month.
  */
 
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Solution26 {
     public static final Scanner in = new Scanner(System.in);
 
-    public double balance;
-    public double apr;
-    public double payment;
-    public int time;
+    public static double balance;
+    public static double apr;
+    public static double payment;
+    public static int time;
 
-    public void main(String[] args) {
-        Solution26 sol26main = new Solution26();
+    public static void main(String[] args) {
+     //   Solution26 sol26main = new Solution26();
 
         //ask balance
-        balance = sol26main.askBalance(balance);
+        balance = askBalance();
 
         //ask apr
-        apr = sol26main.askApr(apr);
+        apr = askApr();
 
         //ask monthly payment
-        payment = sol26main.askPayment(payment);
+        payment = askPayment();
 
         //calculate time
         PaymentCalculator paymentCalculator = new PaymentCalculator();
-        time = paymentCalculator.calculateMonthsUntilPaidOff(balance, apr, payment, time);
-
+        time = PaymentCalculator.calculateMonthsUntilPaidOff(balance, apr, payment, time);
         printTime(time);
 
 
     }
 
-    public double askBalance(double balance){
+    public static double askBalance(){
         System.out.println("What is your balance?");
-        balance = in.nextInt();
-        return balance;
+        return in.nextInt();
     }
 
-    public double askApr(double apr) {
-        System.out.println("What is the aor on the card (as a percent)?");
-        this.apr = in.nextInt();
-        this.apr = this.apr /100;
-        return this.apr;
+    public static double askApr() {
+        System.out.println("What is the apr on the card (as a percent)?");
+        double apr = in.nextInt();
+        apr = apr /100;
+        return apr;
     }
 
-    public double askPayment(double payment) {
+    public static double askPayment() {
         System.out.println("What is the monthly payment you can make?");
-        payment = in.nextInt();
-        return payment;
+        return in.nextInt();
     }
 
-    public void printTime(int time) {
+    public static void printTime(int time) {
         System.out.println("It will take you "+ time +" months to pay off this card.");
     }
 }

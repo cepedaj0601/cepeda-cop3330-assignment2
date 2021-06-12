@@ -52,6 +52,64 @@ public class Solution27 {
     public static final Scanner in = new Scanner(System.in);
 
     public static void main(String[] args) {
+        //ask for first name
+        //validate first name
+        validateFirstName();
+
+
+        //ask for last
+        //validate last name
+        validateLastName();
+
+        //ask for zip code
+        //validate zip code
+        validateZipCode();
+
+        //ask for employee id
+        //validate id
+        validateId();
+
+        //validate input function
+        //output results
+    }
+
+    public static boolean validateFirstName(){
+        System.out.println("Enter the first name:");
+        String firstName = in.next();
+
+        boolean isFirstValid;
+        //validate
+        return isFirstValid;
+    }
+
+    public static boolean validateLastName(){
+        System.out.println("Enter the last name:");
+        String lastName = in.next();
+
+        boolean isLastValid;
+        //validate
+        return isLastValid;
+    }
+
+    public static boolean validateZipCode(){
+        System.out.println("Enter the Zip code:");
+        int zip = in.nextInt();
+
+        boolean isZipValid;
+        //validate
+        return isZipValid;
+    }
+
+    public static boolean validateId(){
+        System.out.println("Enter an employee-Id");
+        int id = in.nextInt();
+
+        boolean isIdValid;
+        //validate
+        return isIdValid;
+    }
+
+    public static String validateInput (){
 
     }
 }
