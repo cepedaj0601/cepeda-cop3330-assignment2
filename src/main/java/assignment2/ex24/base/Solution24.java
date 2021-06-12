@@ -26,9 +26,6 @@ your own algorithm.
  */
 
 import java.util.Scanner;
-import java.util.Arrays;
-
-import static java.lang.System.exit;
 
 public class Solution24 {
     private static final Scanner in = new Scanner(System.in);
@@ -59,7 +56,7 @@ public class Solution24 {
     }
 
     public static String generateOutput(boolean isAnagram){
-        String output;
+
         if(isAnagram){
             return "is anagram";
         }

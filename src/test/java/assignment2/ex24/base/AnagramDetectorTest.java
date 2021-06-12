@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class AnagramDetectorTest {
 
     @Test
-    void isAnagramReturnsFalseForNonanagrams(){
+    void isAnagramReturnsFalseForNonAnagrams(){
 
         AnagramDetector detector = new AnagramDetector();
 
