@@ -30,6 +30,36 @@ public class Solution33 {
     private static final Scanner in = new Scanner(System.in);
 
     public static void main(String[] args) {
+        int num;
 
+        //prompt input
+        userInput();
+
+        //pick a random number 0-3
+        num = answerPicker();
+
+        //output corresponding response
+        responseSelector(num);
+    }
+
+    public static void userInput(){
+        in.next();
+    }
+
+    public static int answerPicker(){
+      return (int)Math.floor(Math.random()*(4-1+1)+1);
+
+    }
+
+    public static String responseSelector(int num){
+        String[] responses = new String[4];
+        responses[0] = "No.";
+        responses[1] = "Yes.";
+        responses[2] = "Maybe.";
+        responses[3] = "Ask again later.";
+
+        System.out.println(responses[num]);
+
+        return responses[num];
     }
 }

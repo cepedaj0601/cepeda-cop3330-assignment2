@@ -57,10 +57,49 @@ the screen.
 
 import java.util.Scanner;
 
+import static java.lang.Integer.parseInt;
+
 public class Solution32 {
     private static final Scanner in = new Scanner(System.in);
 
     public static void main(String[] args) {
+        //prompt for difficulty level
+        int difficulty = 0;
+        difficulty = difficultySetter(difficulty);
 
+        //calculate random target number based off difficulty
+        int target = 0;
+        target = targetCreator(difficulty, target);
+        System.out.println(target);
+
+
+
+        String guess = "1";
+        int numGuesses = 0;
+        String again = "n";
+
+        new Game();
+        Game.guessingGame(guess, numGuesses, again, target);
+    }
+
+    public static int difficultySetter(int difficulty){
+        System.out.println("Enter the difficulty level (1, 2, or 3): ");
+        String Difficulty = in.next();
+        return parseInt(Difficulty);
+
+    }
+
+    public static int targetCreator(int difficulty, int target){
+        if (difficulty == 1) {
+            target = (int)Math.floor(Math.random()*(10-1+1)+1);
+        }
+        if (difficulty == 2) {
+            target = (int)Math.floor(Math.random()*(100-1+1)+1);
+        }
+        if (difficulty == 3) {
+            target = (int)Math.floor(Math.random()*(1000-1+1)+1);
+        }
+
+        return target;
     }
 }
