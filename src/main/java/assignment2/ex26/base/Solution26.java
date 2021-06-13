@@ -40,7 +40,6 @@ Create a version of the program that lets the user choose whether to figure out 
 the amount needed to pay per month.
  */
 
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Solution26 {
@@ -49,10 +48,10 @@ public class Solution26 {
     public static double balance;
     public static double apr;
     public static double payment;
-    public static int time;
+    public static double time;
 
     public static void main(String[] args) {
-     //   Solution26 sol26main = new Solution26();
+        //Solution26 sol26main = new Solution26();
 
         //ask balance
         balance = askBalance();
@@ -62,9 +61,8 @@ public class Solution26 {
 
         //ask monthly payment
         payment = askPayment();
-
         //calculate time
-        PaymentCalculator paymentCalculator = new PaymentCalculator();
+       // PaymentCalculator paymentCalculator = new PaymentCalculator();
         time = PaymentCalculator.calculateMonthsUntilPaidOff(balance, apr, payment, time);
         printTime(time);
 
@@ -73,22 +71,22 @@ public class Solution26 {
 
     public static double askBalance(){
         System.out.println("What is your balance?");
-        return in.nextInt();
+        return in.nextDouble();
     }
 
     public static double askApr() {
         System.out.println("What is the apr on the card (as a percent)?");
-        double apr = in.nextInt();
+        double apr = in.nextDouble();
         apr = apr /100;
         return apr;
     }
 
     public static double askPayment() {
         System.out.println("What is the monthly payment you can make?");
-        return in.nextInt();
+        return in.nextDouble();
     }
 
-    public static void printTime(int time) {
-        System.out.println("It will take you "+ time +" months to pay off this card.");
+    public static void printTime(double time) {
+        System.out.println("It will take you "+ (int)Math.ceil(time) +" months to pay off this card.");
     }
 }
