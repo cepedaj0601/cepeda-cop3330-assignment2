@@ -52,64 +52,160 @@ public class Solution27 {
     public static final Scanner in = new Scanner(System.in);
 
     public static void main(String[] args) {
+        int valid = 0;
+
         //ask for first name
         //validate first name
-        validateFirstName();
+        int isFirstName = 0;
+        validateFirstName(isFirstValid);
 
 
         //ask for last
         //validate last name
-        validateLastName();
+        int isLastValid = 0;
+        validateLastName(isLastValid);
 
         //ask for zip code
         //validate zip code
-        validateZipCode();
+        boolean isZipValid = false;
+        validateZipCode(isZipValid);
 
         //ask for employee id
         //validate id
-        validateId();
+        boolean isIdValid = false;
+        validateId(isIdValid);
 
         //validate input function
         //output results
+
     }
 
-    public static boolean validateFirstName(){
+    public static int validateFirstName(int isFirstValid){
         System.out.println("Enter the first name:");
         String firstName = in.next();
 
-        boolean isFirstValid;
-        //validate
+        isFirstValid = 0;//0= blank name, 1=is valid, 2=too short
+
+        if (firstName.contains(" ")) {
+        }
+
+        else if (firstName.length() < 2 ) {
+            isFirstValid = 2;
+             }
+
+            else{
+                isFirstValid = 1;
+            }
+
         return isFirstValid;
     }
 
-    public static boolean validateLastName(){
+    public static int validateLastName(int isLastValid){
         System.out.println("Enter the last name:");
         String lastName = in.next();
 
-        boolean isLastValid;
-        //validate
+        isLastValid = 0;//0= blank name, 1=is valid, 2=too short
+        if (lastName.contains(" ")) {
+            isLastValid = 0;
+        }
+
+        else if (lastName.length() < 2 ) {
+            isLastValid = 2;
+        }
+
+        else{
+            isLastValid = 1;
+        }
         return isLastValid;
     }
 
-    public static boolean validateZipCode(){
+    public static boolean validateZipCode(boolean isZipValid){
         System.out.println("Enter the Zip code:");
-        int zip = in.nextInt();
+        String zip = in.next();
 
-        boolean isZipValid;
-        //validate
+        char[] zipArray = zip.toCharArray();
+
+        for (char c : zipArray) {
+            if ((c != '0')|| (c!='1')|| (c!='2')|| (c!='3')||(c!='4')|| (c!='5')|| (c!='6')||( c!='7')||(c!= '8')||
+                    (c!= '9')){
+                isZipValid = false;
+            }
+            else {
+                isZipValid = true;
+            }
+        }
         return isZipValid;
     }
 
-    public static boolean validateId(){
+    public static boolean validateId(boolean isIdValid){
         System.out.println("Enter an employee-Id");
-        int id = in.nextInt();
+        String id = in.next();
 
-        boolean isIdValid;
-        //validate
+        char[] idArray = id.toCharArray();
+
+        if (idArray[1].equals("[a-zA-Z]")) {
+            if (idArray[2].equals("[a-zA-Z]")){
+                if (idArray[3].equals("-")) {
+                    if (idArray[4].equals("[0-9]")){
+                        if (idArray[5].equals("[0-9]")){
+                               isIdValid = true;
+                        }
+                    }
+                }
+            }
+        }
+
         return isIdValid;
     }
 
-    public static String validateInput (){
+    public static int validateInput (int isFirstValid, int isLastValid, boolean isZipValid, boolean isIdValid, int valid
+    , String firstName, String lastName){
+        isFirstValid = validateFirstName(isFirstValid);
+        isLastValid = validateLastName(isLastValid);
+        isZipValid = validateZipCode(isZipValid);
+        isIdValid = validateId(isIdValid);
+        switch (isFirstValid){
+            case 0:
+                System.out.println("The first name must be filled in.");
+                break;
+            case 1:
+                valid = valid + 1;
+                break;
+            case 2:
+                System.out.println(firstName + " is not a valid first name. It is too short.");
+                break;
+        }
+        switch (isLastValid){
+            case 0:
+                System.out.println("The last name must be filled in.");
+                break;
+            case 1:
+                valid = valid + 1;
+                break;
+            case 2:
+                System.out.println(lastName + " is not a valid last name. It is too short.");
+                break;
+        }
+        if(){
 
+        }
+        else{
+
+        }
+
+        if(){
+
+        }
+        else{
+
+        }
+
+        return valid;
+    }
+    public static void outputStatement(int valid){
+        if (valid == 5){
+            String output = "There were no errors found.";
+            System.out.println(output);
+        }
     }
 }
