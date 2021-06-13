@@ -3,7 +3,6 @@ package assignment2.ex26.base;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-
 class PaymentCalculatorTest {
 
    @Test
