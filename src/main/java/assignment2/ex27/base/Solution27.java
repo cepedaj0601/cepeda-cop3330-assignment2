@@ -57,7 +57,7 @@ public class Solution27 {
         //ask for first name
         //validate first name
         int isFirstName = 0;
-        validateFirstName(isFirstValid);
+       // validateFirstName(isFirstValid);
 
 
         //ask for last
@@ -80,69 +80,60 @@ public class Solution27 {
 
     }
 
-    public static int validateFirstName(int isFirstValid){
+    public static int validateFirstName(int isFirstValid) {
         System.out.println("Enter the first name:");
         String firstName = in.next();
 
         isFirstValid = 0;//0= blank name, 1=is valid, 2=too short
 
         if (firstName.contains(" ")) {
-        }
-
-        else if (firstName.length() < 2 ) {
+        } else if (firstName.length() < 2) {
             isFirstValid = 2;
-             }
-
-            else{
-                isFirstValid = 1;
-            }
+        } else {
+            isFirstValid = 1;
+        }
 
         return isFirstValid;
     }
 
-    public static int validateLastName(int isLastValid){
+    public static int validateLastName(int isLastValid) {
         System.out.println("Enter the last name:");
         String lastName = in.next();
 
         isLastValid = 0;//0= blank name, 1=is valid, 2=too short
         if (lastName.contains(" ")) {
             isLastValid = 0;
-        }
-
-        else if (lastName.length() < 2 ) {
+        } else if (lastName.length() < 2) {
             isLastValid = 2;
-        }
-
-        else{
+        } else {
             isLastValid = 1;
         }
         return isLastValid;
     }
 
-    public static boolean validateZipCode(boolean isZipValid){
+    public static boolean validateZipCode(boolean isZipValid) {
         System.out.println("Enter the Zip code:");
         String zip = in.next();
 
         char[] zipArray = zip.toCharArray();
 
         for (char c : zipArray) {
-            if ((c != '0')|| (c!='1')|| (c!='2')|| (c!='3')||(c!='4')|| (c!='5')|| (c!='6')||( c!='7')||(c!= '8')||
-                    (c!= '9')){
+            if ((c != '0') || (c != '1') || (c != '2') || (c != '3') || (c != '4') || (c != '5') || (c != '6') || (c != '7') || (c != '8') ||
+                    (c != '9')) {
                 isZipValid = false;
-            }
-            else {
+            } else {
                 isZipValid = true;
             }
         }
         return isZipValid;
     }
 
-    public static boolean validateId(boolean isIdValid){
+    public static void validateId(boolean isIdValid) {
         System.out.println("Enter an employee-Id");
         String id = in.next();
 
         char[] idArray = id.toCharArray();
-
+/*
         if (idArray[1].equals("[a-zA-Z]")) {
             if (idArray[2].equals("[a-zA-Z]")){
                 if (idArray[3].equals("-")) {
@@ -158,7 +149,7 @@ public class Solution27 {
         return isIdValid;
     }
 
-    public static int validateInput (int isFirstValid, int isLastValid, boolean isZipValid, boolean isIdValid, int valid
+    public static void validateInput (int isFirstValid, int isLastValid, boolean isZipValid, boolean isIdValid, int valid
     , String firstName, String lastName){
         isFirstValid = validateFirstName(isFirstValid);
         isLastValid = validateLastName(isLastValid);
@@ -207,5 +198,6 @@ public class Solution27 {
             String output = "There were no errors found.";
             System.out.println(output);
         }
+    }*/
     }
 }
