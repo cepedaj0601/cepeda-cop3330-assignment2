@@ -132,7 +132,7 @@ public class Solution27 {
         isFirstValid= validateFirstName(firstName);
 
         System.out.println("Enter the last name:");
-        String lastName = in.next();
+        String lastName = in.next().trim();
 
         int isLastValid = 0;
         isLastValid = validateLastName(lastName);

@@ -42,6 +42,49 @@ public class Solution34 {
     private static final Scanner in = new Scanner(System.in);
 
     public static void main(String[] args) {
+        String[] employeeList = new String[5];
+        employeeList[0] = "John Smith";
+        employeeList[1] = "Jackie Jackson";
+        employeeList[2] = "Chris Jones";
+        employeeList[3] = "Amanda Cullen";
+        employeeList[4] = "Jeremy Goodwin";
 
+        String name = "0";
+
+        int removed = 8;
+
+        displayNames(employeeList, removed);
+
+        name = userInput(name);
+
+        new Remover();
+        removed = Remover.employeeRemover(employeeList, name, removed);
+
+        displayNames(employeeList, removed);
     }
+
+    public static void displayNames(String[] employeeList, int removed){
+        int x = 5, counter = 0;
+
+        for (int i = 0; i < 5; i++) {
+            if (i == removed) {
+                counter = counter + 1;
+            }
+        }
+
+        System.out.println("There are " + (x - counter) + " employees:\n");
+        for (int i = 0; i < 5; i++) {
+            if (i != removed) {
+                System.out.println(employeeList[i]);
+            }
+        }
+    }
+
+    public static String userInput(String name){
+        System.out.println("\nEnter an employee name to remove:");
+        return in.next();
+    }
+
+
+
 }
