@@ -35,12 +35,48 @@ Keep the input separate from the processing and the output.
 Challenges
 Have the program read in numbers from an external file instead of prompting for the values.
  */
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Solution36 {
     private static final Scanner in = new Scanner(System.in);
 
     public static void main(String[] args) {
+        ArrayList<String> numList = new ArrayList<String>();
 
+        //prompt & take in list
+        numList = userInput(numList);
+
+        //find & display average
+        average(numList);
+
+        //find & display max
+        max(numList);
+
+        //find & display min
+        min(numList);
+
+        //find & display std
+        std(numList);
+    }
+
+    public static ArrayList<String> userInput(ArrayList<String> numList){
+        return numList;
+    }
+
+    public static void average(ArrayList<String> numList){
+        System.out.println("The average is ");
+    }
+
+    public static void max(ArrayList<String> numList){
+        System.out.println("The maximum is ");
+    }
+
+    public static void min(ArrayList<String> numList){
+        System.out.println("The minimum is ");
+    }
+
+    public static void std(ArrayList<String> numList){
+        System.out.println("The standard deviation is ");
     }
 }
