@@ -34,4 +34,20 @@ import java.util.Scanner;
 public class Solution28 {
     private static final Scanner in = new Scanner(System.in);
 
+    public static void main(String[] args) {
+        int sum = 0;
+        for (int i = 0; i < 5; i++) {
+            System.out.println("Enter a number:");
+            sum = summerUpper(in.nextInt(), sum);
+
+        }
+        System.out.println("The total is "+ sum +".");
+    }
+
+    public static int summerUpper(int num, int sum){
+       sum = num + sum;
+
+       return sum;
+    }
+
 }
