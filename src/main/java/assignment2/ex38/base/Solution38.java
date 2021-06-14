@@ -22,12 +22,76 @@ returns the new array.
 Challenge
 Instead of prompting for numbers, read in lines from any text file and print out only the even-numbered lines.
  */
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class Solution38 {
     private static final Scanner in = new Scanner(System.in);
 
     public static void main(String[] args) {
+        //take in numbers
+        String input = inputString();
 
+        //convert to array
+        int[] intInputArray = inputConverter(input);
+
+        int[] IntArray = new int[intInputArray.length];
+        //filter
+        IntArray = filterEvenNumbers(intInputArray, IntArray);
+
+        //print out new list
+        //printNewArray(IntArray);
+    }
+
+    public static String inputString (){
+        System.out.println("Enter a list of numbers, separated by spaces:");
+        String temp = in.nextLine();
+        System.out.println(temp);
+        return temp;
+    }
+
+    public static int[] inputConverter (String input){
+        char[] inputArray = new char[input.length()];
+        for (int i = 0; i < inputArray.length; i++) {
+            inputArray[i] = input.charAt(i);
+            System.out.print(inputArray[i]);
+        }
+
+        int[] intInputArray = new int[inputArray.length];
+
+        int j = 0;
+
+        for (int i = 0; i < intInputArray.length; i++) {
+            if(Character.isWhitespace(inputArray[i])) {
+
+            }
+            else {
+                intInputArray[j] = inputArray[i];
+                j++;
+                System.out.println(intInputArray[i]);
+            }
+        }
+
+        return intInputArray;
+    }
+
+    public static int[] filterEvenNumbers (int[] intInputArray, int[] IntArray){
+        int j = 0;
+        for (int i = 0; i < intInputArray.length; i++) {
+            if(intInputArray[i] % 2 == 0){
+                IntArray[j] = intInputArray[i];
+                j++;
+            }
+        }
+        return IntArray;
+    }
+
+    public static void printNewArray(int[] IntArray){
+        System.out.println("The even numbers are ");
+        for (int i = 0; i < IntArray.length; i++) {
+            System.out.print(IntArray[i] + " ");
+        }
     }
 }

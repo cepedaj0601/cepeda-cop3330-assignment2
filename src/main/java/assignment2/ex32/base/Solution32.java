@@ -72,14 +72,12 @@ public class Solution32 {
         target = targetCreator(difficulty, target);
         System.out.println(target);
 
-
-
         String guess = "1";
         int numGuesses = 0;
-        String again = "n";
+        String again = "Y";
 
-        new Game();
-        Game.guessingGame(guess, numGuesses, again, target);
+        //new Game();
+        Game.guessingGame(guess, numGuesses, again, target, difficulty);
     }
 
     public static int difficultySetter(int difficulty){
