@@ -70,7 +70,6 @@ public class Solution32 {
         //calculate random target number based off difficulty
         int target = 0;
         target = targetCreator(difficulty, target);
-        System.out.println(target);
 
         String guess = "1";
         int numGuesses = 0;

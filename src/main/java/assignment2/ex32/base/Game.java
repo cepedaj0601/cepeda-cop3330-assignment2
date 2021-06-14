@@ -25,7 +25,7 @@ public class Game {
                 target = targetCreator(difficulty, target);
 
                 //prompt user to guess number
-                System.out.println("I have my number " + target + " . What's your guess?");
+                System.out.println("I have my number. What's your guess?");
 
                 while (target != parseInt(guess)) {
                     String temp = in.next();
@@ -70,7 +70,7 @@ public class Game {
 
 
                 //prompt user to guess number
-                System.out.println("I have my number " + target + " . What's your guess?");
+                System.out.println("I have my number. What's your guess?");
 
                 while (target != parseInt(guess)) {
                     String temp = in.next();

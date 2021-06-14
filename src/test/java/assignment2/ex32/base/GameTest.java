@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class GameTest {
 
     @Test
-    @Disabled
     void guessingGame() {
+        String actual
     }
 }
