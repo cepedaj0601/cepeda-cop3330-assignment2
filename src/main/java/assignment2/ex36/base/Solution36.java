@@ -38,14 +38,18 @@ Have the program read in numbers from an external file instead of prompting for 
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static java.lang.Integer.parseInt;
+
 public class Solution36 {
     private static final Scanner in = new Scanner(System.in);
 
     public static void main(String[] args) {
-        ArrayList<String> numList = new ArrayList<String>();
+        ArrayList<String> numList = new ArrayList<>();
 
         //prompt & take in list
         numList = userInput(numList);
+
+        displayNums(numList);
 
         //find & display average
         average(numList);
@@ -61,22 +65,70 @@ public class Solution36 {
     }
 
     public static ArrayList<String> userInput(ArrayList<String> numList){
+        boolean stop = true;
+        while (stop) {
+            System.out.println("Enter a number:");
+            String temp = in.next();
+            if (!temp.equals("done")) {
+                numList.add(temp);
+            } else {
+                stop = false;
+            }
+        }
         return numList;
     }
 
+    public static void displayNums(ArrayList<String> numList){
+        System.out.print("Numbers: ");
+        for (String s : numList) {
+            System.out.print(s+" ");
+        }
+        System.out.print("\n");
+    }
+
     public static void average(ArrayList<String> numList){
-        System.out.println("The average is ");
+        double sum = 0;
+        for (String s : numList) {
+            sum = parseInt(s) + sum;
+        }
+
+        System.out.println("The average is " + (sum/numList.size()));
     }
 
     public static void max(ArrayList<String> numList){
-        System.out.println("The maximum is ");
+        int Max = 0;
+        for (String s : numList) {
+            if(parseInt(s) > Max){
+                Max = parseInt(s);
+            }
+        }
+        System.out.println("The maximum is " + Max);
     }
 
     public static void min(ArrayList<String> numList){
-        System.out.println("The minimum is ");
+        int Min = parseInt(numList.get(0));
+        for (String s : numList) {
+            if(parseInt(s) < Min){
+                Min = parseInt(s);
+            }
+        }
+        System.out.println("The minimum is " + Min);
     }
 
     public static void std(ArrayList<String> numList){
-        System.out.println("The standard deviation is ");
+        double temp = 0;
+        for (String s : numList) {
+            temp = parseInt(s) + temp;
+        }
+
+        double avg = temp / numList.size();
+
+        temp = 0;
+        for (String s : numList) {
+            temp = (Math.pow((parseInt(s) - avg),2)) + temp;
+        }
+        avg = Math.sqrt(temp / numList.size());
+
+        System.out.printf("The standard deviation is %.2f", avg);
     }
 }
